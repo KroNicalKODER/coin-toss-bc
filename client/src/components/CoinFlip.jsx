@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CoinFlip.css';
 import { useStateContext } from '../context/index.jsx';
+import { ConnectWallet } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 
 function CoinFlip() {
@@ -11,11 +12,14 @@ function CoinFlip() {
 
   const getRandomNumber = () => Math.floor(Math.random() * 2) + 1;
 
+  if (!address) {
+    return (
+        <div className="connect-wallet">
+          <ConnectWallet />
+        </div>
+    );
+  }
   const handleCoinFlip = async () => {
-    if (!address) {
-      connect(); // Connect wallet if not connected
-      return;
-    }
 
     if (!betAmount) {
       alert("Please enter a bet amount.");
