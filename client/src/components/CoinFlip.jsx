@@ -20,7 +20,6 @@ function CoinFlip() {
     );
   }
   const handleCoinFlip = async () => {
-
     if (!betAmount) {
       alert("Please enter a bet amount.");
       return;
